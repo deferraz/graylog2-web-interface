@@ -1,0 +1,12 @@
+Source: graylog2-web
+Section: net
+Priority: extra
+Maintainer: Andre Ferraz <andre.ferraz@locaweb.com.br>
+Build-Depends: ruby1.9.1, ruby1.9.1-dev, libxslt-dev, libxml2-dev
+Standards-Version: 0.1
+Homepage: https://github.com/deferraz/graylog2-web-interface
+
+Package: graylog2-web
+Architecture: any
+Depends: ruby1.9.1, libbundler-ruby1.9.1, libyaml-0-2, libxslt1.1, libxml2, ghostscript
+Description: Graylog2 is an open source syslog implementation that stores your logs in ElasticSearch

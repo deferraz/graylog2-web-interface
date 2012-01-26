@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+DIR_NAME = ENV['PWD'].split('/').last
+
+DEBIAN_PATH = "debian/#{DIR_NAME}/var/www/graylog2-web/"
+
+DEBIAN_FILES = %w(README Gemfile Gemfile.lock Rakefile app god
+                  config.ru config doc lib script vendor public)
+
+[DEBIAN_PATH, "debian/#{DIR_NAME}/var/www/graylog2-web/tmp", "debian/#{DIR_NAME}/var/www/graylog2-web/log"].each {|dir| FileUtils.mkdir_p(dir)}
+
+FileUtils.cp_r DEBIAN_FILES, DEBIAN_PATH, preserve: true

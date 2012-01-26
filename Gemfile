@@ -17,6 +17,8 @@ gem 'home_run', '~> 1.0.2', :platforms => :ruby
 gem 'SystemTimer', '~> 1.2.3', :require => 'system_timer', :platforms => :ruby_18
 gem 'rails_autolink', '~> 1.0.4'
 gem 'kaminari', '~> 0.12.4'
+gem 'unicorn'
+gem "god",   "~> 0.11"
 
 group :development, :test do
   # might be useful to generate fake data in development
@@ -24,10 +26,10 @@ group :development, :test do
   gem 'faker', '~> 0.9.5'
 end
 
-group :development do
-  # gem 'ruby-prof', '~> 0.10.5'  # works nice with NewRelic RPM Developer Mode
-  gem 'passenger', '~> 3.0.9'
-end
+#group :development do
+#  # gem 'ruby-prof', '~> 0.10.5'  # works nice with NewRelic RPM Developer Mode
+#  gem 'passenger', '~> 3.0.9'
+#end
 
 group :test do
   gem 'ci_reporter', '~> 1.6.4'
