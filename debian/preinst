@@ -31,6 +31,9 @@ case "$1" in
     chown -R graylog2. /var/www/graylog2-web
   fi
   mkdir -p /var/www/graylog2-web/tmp/pids
+  if [ ! -d /var/log/graylog2-web ] ; then
+    mkdir /var/log/graylog2-web
+  fi
   chown graylog2:graylog2 /var/log/graylog2-web
 
     ;;
