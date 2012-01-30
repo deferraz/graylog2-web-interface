@@ -12,10 +12,10 @@
 ### END INIT INFO
 
 PATH+=$(NEW_PATH="/var/www/graylog2-deb/vendor/bundle/ruby/1.9.1/gems/*/bin" ; echo $NEW_PATH | sed 's/^/:/g;s/ /:/g')
-APP_PATH=/var/www/gray2log-web
+APP_PATH=/var/www/graylog2-web
 
 NAME=graylog2-web
-DESC=gray2log-web
+DESC=graylog2-web
 GOD="bundle exec god"
 
 set -e
