@@ -45,7 +45,13 @@ class MessageGateway
   @default_query_options = { :sort => "created_at desc" }
 
   def self.all_paginated(page = 1)
-    wrap search("*", pagination_options(page).merge(@default_query_options))
+    r = search(pagination_options(page).merge(@default_query_options)) do
+      query do
+        all
+      end
+    end
+
+    wrap(r)
   end
 
   def self.all_of_stream_paginated(stream_id, page = 1)
@@ -132,11 +138,17 @@ class MessageGateway
             must { term(:host, opts[:hostname]) }
           end
           
+          # XXX Duplicated?
           # Possibly narrow down to stream?
           unless opts[:stream_id].blank?
             must { term(:streams, opts[:stream_id]) }
           end
           
+          # File name
+          must { term(:file, filters[:file]) } unless filters[:file].blank?
+
+          # Line number
+          must { term(:line, filters[:line]) } unless filters[:line].blank?
         end
       end
 
@@ -156,22 +168,22 @@ class MessageGateway
   end
 
   def self.oldest_message
-    wrap search("*", { :sort => "created_at asc", :size => 1 }).first
+    r = search({ :sort => "created_at asc", :size => 1 }) do
+      query { all }
+    end.first
+
+    wrap(r)
   end
 
   def self.all_in_range(page, from, to, opts = {})
     raise "You can only pass stream_id OR hostname" if !opts[:stream_id].blank? and !opts[:hostname].blank?
 
-    if page.nil?
-      options = pagination_options(page).merge(@default_query_options)
-    else
-      options = @default_query_options
-    end
+    options = pagination_options(page).merge(@default_query_options)
 
-    r = search options do
+    r = search(options) do
       query do
-        string("*")
-      
+        all
+
         # Possibly narrow down to stream?
         unless opts[:stream_id].blank?
           term(:streams, opts[:stream_id])

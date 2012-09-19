@@ -54,22 +54,19 @@ var Shell = new function() {
     $.ajax({
       type: "POST",
       url: "analytics/shell",
+      dataType: "json",
       data: { cmd : cmd },
       success: function(data) {
-        result = eval('(' + data + ')');
-        if (result.code == "success") {
-          render_result(success(result.ms, result.content, result.op, result.result));
+        if (data.code == "success") {
+          render_result(success(data.ms, data.content, data.op, data.result));
         } else {
-          render_result(error(result.reason));
+          render_result(error(data.reason));
         }
-
         bindMessageSidebarClicks();
-
         eternalize(); // Move command out of input into static text.
       },
       error: function(data) {
         render_result(error("Internal error."));
-
         eternalize(); // Move command out of input into static text.
       }
     });
@@ -93,7 +90,7 @@ var Shell = new function() {
   }
 
   var resize_cmd = function() {
-    container_width = parseInt($('#shell-container').css('width'));
+    container_width = parseInt($('#shell-container').css('width'), 10);
     _cmd.css("width", container_width-_uprompt.width()-30);
   }
 
@@ -157,7 +154,7 @@ var Shell = new function() {
             x += "No matches.";
           } else {
             for (key in res.result) {
-              x += htmlEncode(res.result[key]["distinct"]) + "(" + parseInt(res.result[key]["count"]) + "), ";
+              x += htmlEncode(res.result[key]["distinct"]) + "(" + parseInt(res.result[key]["count"], 10) + "), ";
             }
             x = x.substring(0, x.length - 2); // Remove last comma and whitespace.
             x += "</span>"
