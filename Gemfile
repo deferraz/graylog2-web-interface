@@ -1,8 +1,7 @@
 source :rubygems
 
-gem 'rack', '~> 1.4.0'
-gem 'rake', '~> 0.9.2'
-gem "rails", "~> 3.2.8"
+gem 'rack', '~> 1.3.5'
+gem 'rails', '~> 3.1.3'
 gem 'json', '~> 1.5.1'
 gem 'chronic', '~> 0.6.7'
 gem 'pony', '~> 1.1'  # unusual version number
