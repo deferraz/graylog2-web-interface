@@ -17,7 +17,6 @@ gem 'rails_autolink', '~> 1.0.4'
 gem 'kaminari', '~> 0.12.4'
 gem 'unicorn'
 gem "god",   '~> 0.11'
-gem 'restful_authenication'
 
 group :development, :test do
   # might be useful to generate fake data in development

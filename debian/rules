@@ -9,6 +9,9 @@ build-stamp:
 	#$(MAKE)
 	chmod +x ./script/bundle/install
 	./script/bundle/install
+	pushd vendor/plugins
+	git clone git://github.com/Satish/restful-authentication.git restful_authentication
+	popd
 	touch build-stamp
 
 clean:
