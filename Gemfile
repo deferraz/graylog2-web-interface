@@ -10,7 +10,7 @@ gem 'hoptoad_notifier', '~> 2.4.9'
 gem 'mongoid', '2.4.5'
 gem 'tire', "~> 0.3.12"
 gem 'bson', "~> 1.3.1"
-gem 'bson_ext', '~> 1.3.1 , :platforms => :ruby
+gem 'bson_ext', '~> 1.3.1' , :platforms => :ruby
 gem "home_run", '~> 1.0.2', :platforms => :ruby
 gem 'SystemTimer', '~> 1.2.3', :require => 'system_timer', :platforms => :ruby_18
 gem 'rails_autolink', '~> 1.0.4'
