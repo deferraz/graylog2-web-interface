@@ -47,10 +47,10 @@ case "$1" in
          done
       fi
 
-      for GEM in rails god
-      do
-         chmod 755 $APP_PATH/vendor/bundle/ruby/1.9.1/gems/${GEM}*/bin/${GEM}
-      done
+      #for GEM in rails god
+      #do
+      #   chmod 755 $APP_PATH/vendor/bundle/ruby/1.9.1/gems/${GEM}*/bin/${GEM}
+      #done
 
       if grep "^graylog2-web:" /etc/passwd > /dev/null
       then
