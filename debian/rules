@@ -9,7 +9,8 @@ build-stamp:
 	#$(MAKE)
 	chmod +x ./script/bundle/install
 	./script/bundle/install
-#	git clone https://github.com/Satish/restful-authentication.git vendor/plugins/restful_authentication
+	# ToDo - Isso eh uma gambi , deveria vir direto no projeto
+	git clone https://github.com/Satish/restful-authentication.git vendor/plugins/restful_authentication
 	touch build-stamp
 
 clean:

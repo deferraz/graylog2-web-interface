@@ -8,6 +8,6 @@ if [ "${BUNDLE}" = "NULL" ]; then
 fi
 
 rm -rf .bundle
-bundle install --path=vendor/bundle
+#bundle install --path=vendor/bundle
 RAILS_ENV=production bundle install --deployment --without test development
 
